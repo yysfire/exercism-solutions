@@ -27,11 +27,7 @@ pub fn is_armstrong_number_for_base(num: u32, base: u32) -> bool {
         sum += d.pow(len);
     }
 
-    if sum == num {
-        true
-    } else {
-        false
-    }
+    sum == num
 }
 
 
