@@ -1,14 +1,12 @@
 pub fn square_of_sum(n: usize) -> usize {
-    unimplemented!("square of sum of 1...{}", n)
+    let sum = (0..=n).fold(0, |acc, x| acc + x);
+    sum * sum
 }
 
 pub fn sum_of_squares(n: usize) -> usize {
-    unimplemented!("sum of squares of 1...{}", n)
+    (0..=n).map(|x| x * x).fold(0, |acc, x| acc + x)
 }
 
 pub fn difference(n: usize) -> usize {
-    unimplemented!(
-        "difference between square of sum of 1...{n} and sum of squares of 1...{n}",
-        n = n,
-    )
+    square_of_sum(n) - sum_of_squares(n)
 }
