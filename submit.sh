@@ -5,6 +5,6 @@ if [ -z $1 ]; then
   exit 1
 fi
 
-exercism submit $1/src/lib.rs
-git add $1/.
+git add $1/
+git diff --name-only --cached | tr '\n' ' ' | xargs exercism submit
 git commit -m "solve $1"
