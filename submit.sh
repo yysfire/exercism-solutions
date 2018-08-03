@@ -5,6 +5,12 @@ if [ -z $1 ]; then
   exit 1
 fi
 
+if [ -z $2 ]; then
+  msg="solve $1"
+else
+  msg=$2
+fi
+
 git add $1/
 git diff --name-only --cached | tr '\n' ' ' | xargs exercism submit
-git commit -m "solve $1"
+git commit -m "${msg}"
