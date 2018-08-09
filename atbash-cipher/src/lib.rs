@@ -1,14 +1,16 @@
 /// "Encipher" with the Atbash cipher.
 pub fn encode(plain: &str) -> String {
-    use std::iter::once;
+    //use std::iter::once;
 
     cipher_str(plain)
         .enumerate()
         .flat_map(|(i, x)| {
             if i != 0 && i % 5 == 0 {
-                once(' ').chain(once(x)).take(2)
+                //once(' ').chain(once(x)).take(2)
+                vec![' ', x]
             } else {
-                once(x).chain(once(' ')).take(1)
+                //once(x).chain(once(' ')).take(1)
+                vec![x]
             }
         })
         .collect::<String>()
