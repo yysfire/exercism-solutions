@@ -1,23 +1,13 @@
 pub fn collatz(n: u64) -> Option<u64> {
     if n == 0 {
         return None;
+    } else if n == 1 {
+        return Some(0);
     }
 
-    let mut n = n;
-    let mut steps = 0;
-    loop {
-        if n == 1 {
-            break;
-        }
-
-        if n % 2 == 0 {
-            n /= 2;
-            steps += 1;
-        } else {
-            n = n * 3 + 1;
-            steps += 1;
-        }
+    if n % 2 == 0 {
+        Some(1 + collatz(n / 2).unwrap())
+    } else {
+        Some(1 + collatz(n * 3 + 1).unwrap())
     }
-
-    Some(steps)
 }
