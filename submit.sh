@@ -5,7 +5,7 @@ if [ -z $1 ]; then
   exit 1
 fi
 
-if [ -z $2 ]; then
+if [ -z "$2" ]; then
   msg="solve $1"
 else
   msg=$2
