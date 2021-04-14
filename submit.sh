@@ -12,5 +12,6 @@ else
 fi
 
 git add $1/
-git diff --name-only --cached | tr '\n' ' ' | xargs exercism submit
+#git diff --name-only --cached | tr '\n' ' ' | xargs exercism submit
+git diff --name-status --cached | grep -v D | cut -f2 | tr '\n' ' ' | xargs exercism submit
 git commit -m "${msg}"
