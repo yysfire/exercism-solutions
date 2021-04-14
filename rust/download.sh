@@ -7,4 +7,4 @@ fi
 
 exercism download --exercise=$1 --track=rust
 git add $1
-git commit -m "download $1"
+git commit -m "download $1 for rust track"
