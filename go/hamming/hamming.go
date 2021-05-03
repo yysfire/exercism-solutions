@@ -1,3 +1,4 @@
+//Package hamming provides a function to calculate the Hamming distance between two DNA strands.
 package hamming
 
 import (
