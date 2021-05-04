@@ -5,32 +5,26 @@ import (
 	"unicode"
 )
 
-var pointMap = map[int]string{
-	1:  "AEIOULNRST",
-	2:  "DG",
-	3:  "BCMP",
-	4:  "FHVWY",
-	5:  "K",
-	8:  "JX",
-	10: "QZ",
-}
-var letterMap = make(map[rune]int)
-
-func init() {
-	for point, letters := range pointMap {
-		for _, r := range letters {
-			letterMap[r] = point
-		}
-	}
-}
-
 //Score return the Scrabble score for the input word
 func Score(input string) int {
 	score := 0
 	for _, r := range input {
 		c := unicode.ToUpper(r)
-		if point, ok := letterMap[c]; ok {
-			score += point
+		switch c {
+		case 'A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T':
+			score += 1
+		case 'D', 'G':
+			score += 2
+		case 'B', 'C', 'M', 'P':
+			score += 3
+		case 'F', 'H', 'V', 'W', 'Y':
+			score += 4
+		case 'K':
+			score += 5
+		case 'J', 'X':
+			score += 8
+		case 'Q', 'Z':
+			score += 10
 		}
 	}
 	return score
