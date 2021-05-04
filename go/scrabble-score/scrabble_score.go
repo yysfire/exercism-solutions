@@ -2,7 +2,7 @@
 package scrabble
 
 import (
-	"strings"
+	"unicode"
 )
 
 var pointMap = map[int]string{
@@ -14,12 +14,12 @@ var pointMap = map[int]string{
 	8:  "JX",
 	10: "QZ",
 }
-var letterMap = make(map[string]int)
+var letterMap = make(map[rune]int)
 
 func init() {
 	for point, letters := range pointMap {
 		for _, r := range letters {
-			letterMap[string(r)] = point
+			letterMap[r] = point
 		}
 	}
 }
@@ -28,7 +28,7 @@ func init() {
 func Score(input string) int {
 	score := 0
 	for _, r := range input {
-		c := strings.ToUpper(string(r))
+		c := unicode.ToUpper(r)
 		if point, ok := letterMap[c]; ok {
 			score += point
 		}
