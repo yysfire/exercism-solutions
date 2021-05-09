@@ -2,15 +2,14 @@ use std::collections::HashSet;
 
 pub fn check(candidate: &str) -> bool {
     let mut set = HashSet::new();
-    for c in candidate.chars() {
-        if c == ' ' || c == '-' {
+    for c in candidate.to_lowercase().chars() {
+        if c.is_whitespace() || c == '-' {
             continue;
         }
-        let ch = c.to_ascii_lowercase();
-        if !ch.is_ascii_alphabetic() || set.contains(&ch) {
+        if !c.is_alphabetic() || set.contains(&c) {
             return false;
         }
-        set.insert(ch);
+        set.insert(c);
     }
 
     true
