@@ -1,10 +1,10 @@
 pub fn square_of_sum(n: usize) -> usize {
-    let sum = (0..=n).fold(0, |acc, x| acc + x);
+    let sum = (0..=n).sum::<usize>();
     sum * sum
 }
 
 pub fn sum_of_squares(n: usize) -> usize {
-    (0..=n).map(|x| x * x).fold(0, |acc, x| acc + x)
+    (0..=n).map(|x| x * x).sum::<usize>()
 }
 
 pub fn difference(n: usize) -> usize {
