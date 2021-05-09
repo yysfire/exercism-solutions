@@ -39,7 +39,6 @@ pub enum Error {
 pub fn convert(number: &[u32], from_base: u32, to_base: u32) -> Result<Vec<u32>, Error> {
     if from_base < 2 {
         return Err(Error::InvalidInputBase);
-
     }
     if to_base < 2 {
         return Err(Error::InvalidOutputBase);
@@ -51,9 +50,14 @@ pub fn convert(number: &[u32], from_base: u32, to_base: u32) -> Result<Vec<u32>,
         }
     }
 
-    let mut num = number.iter()
+    let mut num = number
+        .iter()
         .skip_while(|x| **x == 0)
         .fold(0, |acc, x| acc * from_base + x);
+
+    if num == 0 {
+        return Ok(vec![0]);
+    }
 
     let mut result = vec![];
     while num != 0 {
